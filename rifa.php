@@ -19,24 +19,26 @@
     $imagem = "https://infostore.vteximg.com.br/arquivos/ids/252517-1000-1000/caixa_de_som_amplificada_partybox_ultimate_1100w_-_jbl_01.jpg?v=638428272365070000";
 
     echo "<h1>Ação entre amigos - CSL</h1>";
-    echo "<div>";
+    echo "<div class='headerTitle'>";
     echo "<h2 class='subtitle'>Quantidade de rifas à gerar: </h2>";
     echo "<div class='head'>";
 
     echo "<form action='rifa.php' method='get'>";
-    echo "<input type='number' placeholder='Digite a quantidade' min='0' max='9999' maxlength=4 name='valor'/>";
+    echo "<input type='number' placeholder='Digite a quantidade' min='0' max='9999' maxlength=4 name='valor' required/>";
+    echo "<input type='number' placeholder='Nº inicial' min='1' max='9999' maxlength=4 name='inicio' required/>";
     echo "<button type='submit'>Gerar Rifas</button>";
     echo "</form>";
     echo "</div>";
     echo "</div>";
 
-    if (isset($_GET['valor']) && !empty($_GET['valor'])) {
+    if (isset($_GET['valor']) && !empty($_GET['valor']) && isset($_GET['inicio']) && !empty($_GET['inicio'])) {
+        $numero = $_GET['inicio'];
         while ($cont <= $_GET['valor']) {
             echo "<table>
         <tr>
             <td class='recib'>
                 <p class='number'><b>Nº ";
-            echo str_pad($cont, 4, '0', STR_PAD_LEFT);
+            echo str_pad($numero, 4, '0', STR_PAD_LEFT);
             echo "</b></p>
                 <p>Nome: ______________________________</p>
                 <p>Telefone: ____________________________</p>
@@ -48,14 +50,14 @@
                 <p>$premio</p>
                 <p>Valor: $valor</p>
                 <p><b>Nº ";
-            echo str_pad($cont, 4, '0', STR_PAD_LEFT);
+            echo str_pad($numero, 4, '0', STR_PAD_LEFT);
             echo "</b></p>
             </td>
             <td>
                 <img src='$imagem' alt='foto' class='foto' />
             </td>
         </tr></table>";
-
+            $numero++;
             $cont++;
         };
     };
