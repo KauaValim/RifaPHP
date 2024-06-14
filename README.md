@@ -11,7 +11,7 @@
 <p> This project was the first project using PHP that I did in the IT technical course. The objective of this project is to develop a web page that can create some
 raffle tickets for printing, allowing you to select the quantity to print and the initial number of tickets.</p>
 
-## 💻 Pre-requisites
+## 💻 Prerequisites
 
 Before start, check if you have the requisites below:
 
